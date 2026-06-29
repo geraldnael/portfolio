@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Gerald Nathanael — Web Developer & UI/UX Designer from Indonesia" />
+  <title>Gerald Nathanael</title>
+  <link rel="icon" href="images/t.png" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/modern.css" />
+</head>
+<body>
+
+<!-- NOISE OVERLAY -->
+<div class="noise-overlay" aria-hidden="true"></div>
+
+<!-- SPOTLIGHT (follows cursor) -->
+<div class="spotlight" id="spotlight"></div>
+
+<!-- PRELOADER -->
+<div id="preloader">
+  <div class="pre-inner">
+    <div class="pre-logo">GN<span>.</span></div>
+    <div class="pre-bar-wrap"><div class="pre-bar" id="preBar"></div></div>
+    <div class="pre-pct" id="prePct">0%</div>
+  </div>
+</div>
+
+<!-- CURSOR -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing">
+  <span class="cursor-label" id="cursorLabel"></span>
+</div>
+
+<!-- PARTICLES -->
+<canvas id="particles"></canvas>
+
+<!-- NAV PROGRESS BAR -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-wrap">
+    <a href="#home" class="nav-brand mag-btn">GN<span class="brand-dot">.</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home"           class="nl active">Home</a></li>
+      <li><a href="#about"          class="nl">About</a></li>
+      <li><a href="#skills"         class="nl">Skills</a></li>
+      <li><a href="#experience"     class="nl">Experience</a></li>
+      <li><a href="#portfolio"      class="nl">Projects</a></li>
+      <li><a href="#certifications" class="nl">Certs</a></li>
+      <li><a href="#contact"        class="nl contact-cta mag-btn">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-btn mag-btn" id="themeBtn" title="Toggle theme">
+        <i class="fas fa-moon" id="themeIcon"></i>
+      </button>
+      <button class="burger" id="burger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <!-- Floating nav indicator -->
+  <div class="nav-indicator" id="navIndicator"></div>
+</nav>
+
+<!-- MOBILE DRAWER -->
+<div class="drawer" id="drawer">
+  <button class="drawer-close" id="drawerClose"><i class="fa fa-times"></i></button>
+  <ul>
+    <li><a href="#home"           class="dl">Home</a></li>
+    <li><a href="#about"          class="dl">About</a></li>
+    <li><a href="#skills"         class="dl">Skills</a></li>
+    <li><a href="#experience"     class="dl">Experience</a></li>
+    <li><a href="#portfolio"      class="dl">Projects</a></li>
+    <li><a href="#certifications" class="dl">Certifications</a></li>
+    <li><a href="#contact"        class="dl">Contact</a></li>
+  </ul>
+</div>
+
+<!-- SOCIAL RAIL -->
+<aside class="social-rail">
+  <a href="https://github.com/geraldnael"                                      target="_blank" class="mag-btn" title="GitHub"><i class="fab fa-github"></i></a>
+  <a href="https://www.linkedin.com/in/gerald-nathanael-9777aa274/"            target="_blank" class="mag-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+  <a href="https://www.instagram.com/gerald.nael/"                             target="_blank" class="mag-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+  <a href="https://twitter.com/geraldnael"                                     target="_blank" class="mag-btn" title="Twitter"><i class="fab fa-twitter"></i></a>
+  <div class="rail-line"></div>
+</aside>
+
+<!-- EASTER EGG TOAST -->
+<div class="toast" id="easterToast">
+  <span>🥚 You found the easter egg! Try pressing G → N</span>
+</div>
+
+<!-- PROJECT MODAL -->
+<div class="proj-modal" id="projModal">
+  <div class="proj-modal-inner">
+    <button class="modal-close mag-btn" id="modalClose"><i class="fas fa-times"></i></button>
+    <div class="modal-img-wrap">
+      <img id="modalImg" src="" alt="" />
+    </div>
+    <div class="modal-body">
+      <div class="proj-chips" id="modalChips"></div>
+      <h2 id="modalTitle"></h2>
+      <p id="modalDesc"></p>
+      <div class="modal-actions">
+        <a id="modalLink" href="#" target="_blank" class="btn-solid mag-btn">
+          <i class="fas fa-external-link-alt"></i> View Live
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section id="home" class="section hero-sec">
+  <video autoplay muted loop playsinline class="hero-vid">
+    <source src="images/bg.mp4" type="video/mp4" />
+  </video>
+  <div class="hero-scrim"></div>
+  <div class="hero-grid-lines"></div>
+
+  <div class="hero-body">
+    <p class="hero-hi  blur-in" style="--d:.6s">Hi, I am</p>
+    <h1 class="hero-name blur-in" style="--d:.9s">
+      Gerald<br><span class="outline-text">Nathanael</span>
+    </h1>
+    <p class="hero-role blur-in" style="--d:1.2s">
+      A&nbsp;<span class="typed-el"></span><span class="typed-cur">|</span>
+    </p>
+    <div class="hero-btns blur-in" style="--d:1.5s">
+      <a href="images/CV Gerald Nathanael.pdf" target="_blank" class="btn-solid mag-btn">
+        <i class="fas fa-file-alt"></i> Resume
+      </a>
+      <a href="#contact" class="btn-ghost mag-btn">Hire Me</a>
+      <div class="hero-socials">
+        <a href="https://twitter.com/geraldnael"                              target="_blank" class="mag-btn"><i class="fab fa-twitter"></i></a>
+        <a href="https://github.com/geraldnael"                               target="_blank" class="mag-btn"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/gerald-nathanael-9777aa274/"     target="_blank" class="mag-btn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+
+    <!-- Animated stats counters -->
+    <div class="hero-stats blur-in" style="--d:1.8s">
+      <div class="stat-item">
+        <span class="stat-num" data-target="3">0</span><span class="stat-plus">+</span>
+        <span class="stat-label">Years Learning</span>
+      </div>
+      <div class="stat-div"></div>
+      <div class="stat-item">
+        <span class="stat-num" data-target="7">0</span><span class="stat-plus">+</span>
+        <span class="stat-label">Projects Built</span>
+      </div>
+      <div class="stat-div"></div>
+      <div class="stat-item">
+        <span class="stat-num" data-target="12">0</span><span class="stat-plus">+</span>
+        <span class="stat-label">Certifications</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <div class="scroll-mouse"><div class="scroll-dot"></div></div>
+    <span>scroll</span>
+  </div>
+</section>
+
+<!-- MARQUEE STRIP -->
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-track">
+    <span>HTML</span><span class="marquee-dot">✦</span>
+    <span>CSS</span><span class="marquee-dot">✦</span>
+    <span>JavaScript</span><span class="marquee-dot">✦</span>
+    <span>TypeScript</span><span class="marquee-dot">✦</span>
+    <span>React.js</span><span class="marquee-dot">✦</span>
+    <span>Tailwind</span><span class="marquee-dot">✦</span>
+    <span>Supabase</span><span class="marquee-dot">✦</span>
+    <span>Firebase</span><span class="marquee-dot">✦</span>
+    <span>Zustand</span><span class="marquee-dot">✦</span>
+    <span>Kotlin</span><span class="marquee-dot">✦</span>
+    <span>Figma</span><span class="marquee-dot">✦</span>
+    <span>Python</span><span class="marquee-dot">✦</span>
+    <span>PostgreSQL</span><span class="marquee-dot">✦</span>
+    <span>Git</span><span class="marquee-dot">✦</span>
+    <span>Vercel</span><span class="marquee-dot">✦</span>
+    <!-- duplicate for seamless loop -->
+    <span>HTML</span><span class="marquee-dot">✦</span>
+    <span>CSS</span><span class="marquee-dot">✦</span>
+    <span>JavaScript</span><span class="marquee-dot">✦</span>
+    <span>TypeScript</span><span class="marquee-dot">✦</span>
+    <span>React.js</span><span class="marquee-dot">✦</span>
+    <span>Tailwind</span><span class="marquee-dot">✦</span>
+    <span>Supabase</span><span class="marquee-dot">✦</span>
+    <span>Firebase</span><span class="marquee-dot">✦</span>
+    <span>Zustand</span><span class="marquee-dot">✦</span>
+    <span>Kotlin</span><span class="marquee-dot">✦</span>
+    <span>Figma</span><span class="marquee-dot">✦</span>
+    <span>Python</span><span class="marquee-dot">✦</span>
+    <span>PostgreSQL</span><span class="marquee-dot">✦</span>
+    <span>Git</span><span class="marquee-dot">✦</span>
+    <span>Vercel</span><span class="marquee-dot">✦</span>
+  </div>
+</div>
+
+<!-- ══════════════ ABOUT ══════════════ -->
+<section id="about" class="section">
+  <div class="container">
+    <div class="sec-tag reveal">About Me</div>
+    <div class="about-grid">
+      <div class="about-img-col reveal">
+        <div class="img-frame tilt-card" id="profileTilt">
+          <img src="images/profile.jpg" alt="Gerald Nathanael" />
+          <div class="img-overlay"></div>
+          <div class="tilt-shine"></div>
+        </div>
+        <div class="img-chip mag-btn">
+          <i class="fas fa-code"></i> Front End Developer
+        </div>
+      </div>
+      <div class="about-text-col">
+        <h2 class="sec-heading reveal">Who Am <span class="grad">I?</span></h2>
+        <p class="body-text reveal">
+          Hi! I'm Gerald Nathanael — an Informatics Engineering graduate from Del Institute of Technology and a passionate Full Stack Web Developer. I love building scalable, user-friendly web applications using modern technologies like React, TypeScript, Python (Flask), Laravel, and Supabase.
+        </p>
+        <p class="body-text reveal">
+          From cooperative accounting systems to ML-powered web apps, I enjoy solving real-world problems through clean and maintainable code. I also completed an internship as a Pega Developer, gaining experience in enterprise application development. Always learning, always building.
+        </p>
+        <div class="meta-grid reveal">
+          <div class="meta-item"><span class="meta-key">Location</span><span class="meta-val">Bekasi, West Java</span></div>
+          <div class="meta-item"><span class="meta-key">University</span><span class="meta-val">Del Institute of Technology</span></div>
+          <div class="meta-item"><span class="meta-key">Email</span><span class="meta-val">geraldnael@gmail.com</span></div>
+          <div class="meta-item"><span class="meta-key">Status</span><span class="meta-val status-green">🟢 Open to Opportunities</span></div>
+        </div>
+        <div class="about-cta reveal">
+          <a href="#contact" class="btn-solid mag-btn">Hire Me</a>
+          <a href="images/CV Gerald Nathanael.pdf" target="_blank" class="btn-ghost mag-btn">
+            <i class="fas fa-download"></i> Download CV
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ SKILLS ══════════════ -->
+<section id="skills" class="section alt-sec">
+  <div class="container">
+    <div class="sec-tag reveal">Tech Stack</div>
+    <h2 class="sec-heading text-c reveal">Tools I <span class="grad">Build With</span></h2>
+    <p class="sec-sub reveal">Hover a card — each one glows in its brand color ✦</p>
+    <ul class="skills-grid">
+      <li class="sk-card tilt-card reveal" style="--clr:#e34c26"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"/><span>HTML 5</span></li>
+      <li class="sk-card tilt-card reveal" style="--clr:#563d7c"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS 3"/><span>CSS 3</span></li>
+      <li class="sk-card tilt-card reveal" style="--clr:#f0db4f"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"/><span>JavaScript</span></li>
+      <li class="sk-card tilt-card reveal" style="--clr:#007acc"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript"/><span>TypeScript</span></li>
+      <li class="sk-card tilt-card reveal" style="--clr:#61dafb"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React"/><span>React.js</span></li>
+      <li class="sk-card tilt-card reveal" style="--clr:#38bdf8"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind"/><span>Tailwind</span></li>
+      <li class="sk-card tilt-card reveal" style="--clr:#ff9900"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma"/><span>Figma</span></li>
+      <li class="sk-card tilt-card reveal" style="--clr:#6cc24a"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"/><span>Python</span></li>
+      <li class="sk-card tilt-card reveal" style="--clr:#336791"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL"/><span>PostgreSQL</span></li>
+      <li class="sk-card tilt-card reveal" style="--clr:#f1502f"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"/><span>Git</span></li>
+      <li class="sk-card tilt-card reveal" style="--clr:#fff"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" alt="Vercel"/><span>Vercel</span></li>
+      <li class="sk-card tilt-card reveal" style="--clr:#4f46e5"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code"/><span>VS Code</span></li>
+      <li class="sk-card tilt-card reveal" style="--clr:#3ecf8e"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg" alt="Supabase"/><span>Supabase</span></li>
+      <li class="sk-card tilt-card reveal" style="--clr:#ffca28"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase"/><span>Firebase</span></li>
+      <li class="sk-card tilt-card reveal" style="--clr:#7f52ff"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kotlin/kotlin-original.svg" alt="Kotlin"/><span>Kotlin</span></li>
+      <li class="sk-card tilt-card zustand-card reveal" style="--clr:#764abc"><img src="https://raw.githubusercontent.com/pmndrs/zustand/main/examples/demo/public/favicon.ico" alt="Zustand"/><span>Zustand</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ══════════════ EXPERIENCE ══════════════ -->
+<section id="experience" class="section">
+  <div class="container">
+    <div class="sec-tag reveal">Background</div>
+    <h2 class="sec-heading text-c reveal">My <span class="grad">Journey</span></h2>
+    <p class="sec-sub reveal">Education & organizational experience</p>
+    <div class="exp-grid">
+      <div>
+        <div class="exp-col-label reveal"><i class="fas fa-graduation-cap"></i> Education</div>
+        <div class="exp-card tilt-card reveal">
+          <div class="exp-header">
+            <div><div class="exp-title">Del Institute of Technology</div><div class="exp-company">S1 Informatics</div></div>
+            <span class="exp-badge">2021 — Present</span>
+          </div>
+          <ul class="exp-list">
+            <li>Active in Del Cyber Security Club (DCSC) — Head of Design Division</li>
+            <li>Head of Informatics Class — liaison between students and lecturers</li>
+            <li>Head of PR &amp; Publications at IT Del Electoral Commission</li>
+          </ul>
+          <div class="skill-chips">
+            <span class="chip" style="--cc:#61dafb"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"/>React</span>
+            <span class="chip" style="--cc:#f0db4f"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"/>JavaScript</span>
+            <span class="chip" style="--cc:#ff9900"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"/>Figma</span>
+          </div>
+        </div>
+        <div class="exp-card tilt-card reveal">
+          <div class="exp-header">
+            <div><div class="exp-title">58 Jakarta Senior High School</div><div class="exp-company">Science Program</div></div>
+            <span class="exp-badge">2018 — 2021</span>
+          </div>
+          <ul class="exp-list"><li>Focused on STEM coursework and foundational sciences</li></ul>
+        </div>
+        <div class="exp-card tilt-card reveal">
+          <div class="exp-header">
+            <div><div class="exp-title">230 Jakarta Junior High School</div><div class="exp-company">Where the journey began</div></div>
+            <span class="exp-badge">2015 — 2018</span>
+          </div>
+          <ul class="exp-list"><li>First introduction to web development via blogging — sparked lifelong passion</li></ul>
+        </div>
+      </div>
+      <div>
+        <div class="exp-col-label reveal"><i class="fas fa-briefcase"></i> Experience</div>
+        <div class="exp-card tilt-card reveal">
+          <div class="exp-header">
+            <div><div class="exp-title">Head of Design &amp; Edit Division</div><div class="exp-company">Del Cyber Security Club (DCSC)</div></div>
+            <span class="exp-badge">2021 — Present</span>
+          </div>
+          <ul class="exp-list">
+            <li>Lead all visual design and content creation for the club</li>
+            <li>Coordinate design across social media, events, and publications</li>
+            <li>Mentor junior members on design tools and workflows</li>
+          </ul>
+          <div class="skill-chips">
+            <span class="chip" style="--cc:#ff9900"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"/>Figma</span>
+          </div>
+        </div>
+        <div class="exp-card tilt-card reveal">
+          <div class="exp-header">
+            <div><div class="exp-title">Head of Informatics Class</div><div class="exp-company">Del Institute of Technology</div></div>
+            <span class="exp-badge">2022 — Present</span>
+          </div>
+          <ul class="exp-list">
+            <li>Serve as liaison between students and faculty</li>
+            <li>Organize academic and social activities for the class</li>
+          </ul>
+        </div>
+        <div class="exp-card tilt-card reveal">
+          <div class="exp-header">
+            <div><div class="exp-title">Head of PR &amp; Publications</div><div class="exp-company">IT Del Electoral Commission</div></div>
+            <span class="exp-badge">2023 — 2024</span>
+          </div>
+          <ul class="exp-list">
+            <li>Managed social media channels and public communications</li>
+            <li>Designed campaign materials and press releases</li>
+          </ul>
+          <div class="skill-chips">
+            <span class="chip" style="--cc:#e34c26"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"/>HTML</span>
+            <span class="chip" style="--cc:#ff9900"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"/>Figma</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ PORTFOLIO ══════════════ -->
+<section id="portfolio" class="section alt-sec">
+  <div class="container">
+    <div class="sec-tag reveal">My Work</div>
+    <h2 class="sec-heading text-c reveal">Featured <span class="grad">Projects</span></h2>
+    <p class="sec-sub reveal">Click any card to explore the full details</p>
+
+    <!-- Filter tabs -->
+    <div class="proj-tabs reveal">
+      <button class="proj-tab active" data-filter="all">All</button>
+      <button class="proj-tab" data-filter="webdev">Web Dev</button>
+      <button class="proj-tab" data-filter="uiux">UI / UX</button>
+    </div>
+
+    <div class="proj-grid" id="projGrid">
+
+      <div class="proj-card reveal" data-modal data-category="webdev"
+        data-img="images/proyek-7.jpg"
+        data-title="SIA Koperasi belaSAKEP"
+        data-chips="React,TypeScript,Supabase,Zustand,Tailwind"
+        data-desc="Full-stack Accounting Information System for KOPERASI PEGAWAI DAN PENSIUNAN RUMAH SAKIT SOEHARTO HEERDJAN. Features double-entry journal, subsidiary ledgers (buku pembantu), chart of accounts, balance sheet, income statement, and real-time cross-device sync via Supabase. Built with React, TypeScript, Vite, Zustand, and Tailwind CSS — deployed on Vercel."
+        data-link="https://koperasi-git-main-geraldnaels-projects.vercel.app">
+        <div class="proj-img"><img src="images/proyek-7.jpg" alt="SIA Koperasi"/>
+          <div class="proj-hover"><span class="proj-open-hint">Click to explore</span></div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-chips"><span>React</span><span>TypeScript</span><span>Supabase</span></div>
+          <h3>SIA Koperasi belaSAKEP</h3>
+          <p>Full-stack Accounting Information System with double-entry journal, subsidiary ledgers, and real-time sync.</p>
+          <span class="proj-arrow">Explore <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </div>
+
+      <div class="proj-card reveal" data-modal data-category="webdev"
+        data-img="images/proyek-8.jpg"
+        data-title="Personal Portfolio Website"
+        data-chips="HTML,CSS,JavaScript,Vercel"
+        data-desc="My personal portfolio website — the very site you're viewing right now! Built from scratch with vanilla HTML, CSS, and JavaScript featuring interactive animations, magnetic cursor, 3D tilt cards, particle background, project modal, dark/light theme, and a hidden easter egg. Deployed on Vercel."
+        data-link="https://webportfolio-livid-alpha.vercel.app">
+        <div class="proj-img"><img src="images/proyek-8.jpg" alt="Portfolio"/>
+          <div class="proj-hover"><span class="proj-open-hint">Click to explore</span></div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-chips"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+          <h3>Personal Portfolio Website</h3>
+          <p>This very site — built from scratch with interactive animations, magnetic cursor, 3D tilt, and dark/light mode.</p>
+          <span class="proj-arrow">Explore <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </div>
+
+      <div class="proj-card reveal" data-modal data-category="webdev"
+        data-img="images/proyek-6.jpg"
+        data-title="Discussion Forum App"
+        data-chips="React,Redux,REST API"
+        data-desc="A full-featured discussion forum application built as the capstone project for Dicoding's React Developer learning path. Implements Redux for global state management, REST API integration, and features threading, voting, and user authentication."
+        data-link="https://discuss-forum-nu.vercel.app/">
+        <div class="proj-img"><img src="images/proyek-6.jpg" alt="Discussion Forum"/>
+          <div class="proj-hover"><span class="proj-open-hint">Click to explore</span></div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-chips"><span>React</span><span>Redux</span><span>REST API</span></div>
+          <h3>Discussion Forum App</h3>
+          <p>Full-featured discussion forum with Redux state management — Dicoding React capstone.</p>
+          <span class="proj-arrow">Explore <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </div>
+
+      <div class="proj-card reveal" data-modal data-category="webdev"
+        data-img="images/proyek-5.jpg"
+        data-title="Notes App"
+        data-chips="React,JavaScript,Dicoding"
+        data-desc="A React-based notes application built as the final project for Dicoding's Front End Developer course. Features include creating, editing, archiving, and deleting notes with a clean and responsive interface."
+        data-link="https://notes-api-dusky-delta.vercel.app">
+        <div class="proj-img"><img src="images/proyek-5.jpg" alt="Notes App"/>
+          <div class="proj-hover"><span class="proj-open-hint">Click to explore</span></div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-chips"><span>React</span><span>JavaScript</span></div>
+          <h3>Notes App</h3>
+          <p>React notes application with create, edit, archive, and delete — Dicoding final project.</p>
+          <span class="proj-arrow">Explore <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </div>
+
+      <div class="proj-card reveal" data-modal data-category="webdev"
+        data-img="images/proyek-3.jpg"
+        data-title="Personal Blog"
+        data-chips="XML,Blogspot,Web Basics"
+        data-desc="My very first web project — a personal blog built from scratch on Blogspot with full XML template customization. Created in junior high school, this is what sparked my lifelong passion for web development."
+        data-link="https://geraldnathan.blogspot.co.id">
+        <div class="proj-img"><img src="images/proyek-3.jpg" alt="Blogspot"/>
+          <div class="proj-hover"><span class="proj-open-hint">Click to explore</span></div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-chips"><span>XML</span><span>Blog</span></div>
+          <h3>Personal Blog</h3>
+          <p>My first web project — a Blogspot site built from scratch with XML customization in junior high.</p>
+          <span class="proj-arrow">Explore <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </div>
+
+      <div class="proj-card reveal" data-modal data-category="uiux"
+        data-img="images/proyek-2.jpg"
+        data-title="Redesign IT Del Website"
+        data-chips="Figma,UI/UX,HCI"
+        data-desc="Complete redesign of the Institut Teknologi Del official website as part of Human-Computer Interaction coursework. Focused on improving information architecture, visual hierarchy, and user experience for both students and prospective students."
+        data-link="https://www.figma.com/file/ZGtjqYsduanjm8SUWIEZRq/">
+        <div class="proj-img"><img src="images/proyek-2.jpg" alt="IT Del Redesign"/>
+          <div class="proj-hover"><span class="proj-open-hint">Click to explore</span></div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-chips"><span>Figma</span><span>UI/UX</span></div>
+          <h3>Redesign IT Del Website</h3>
+          <p>Complete redesign of the Institut Teknologi Del website — HCI coursework project.</p>
+          <span class="proj-arrow">Explore <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </div>
+
+      <div class="proj-card reveal" data-modal data-category="uiux"
+        data-img="images/proyek-4.jpg"
+        data-title="IT Del Library Redesign"
+        data-chips="Figma,UI/UX,UX Research"
+        data-desc="Redesign of the IT Del Online Library Information System. The project focused on improving the search and discovery experience, simplifying the navigation structure, and modernizing the overall visual language of the system."
+        data-link="https://www.figma.com/file/QUzGITXd09vG4KHRrCWwlm/">
+        <div class="proj-img"><img src="images/proyek-4.jpg" alt="IT Del Library"/>
+          <div class="proj-hover"><span class="proj-open-hint">Click to explore</span></div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-chips"><span>Figma</span><span>UI/UX</span></div>
+          <h3>IT Del Library Redesign</h3>
+          <p>Redesign of the IT Del Online Library — improved UX, search experience, and visual hierarchy.</p>
+          <span class="proj-arrow">Explore <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Show More / Less -->
+    <div class="proj-more-wrap">
+      <button class="proj-more-btn" id="projMoreBtn">
+        <span id="projMoreLabel">Show More</span>
+        <i class="fas fa-chevron-down" id="projMoreIcon"></i>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ CERTIFICATIONS ══════════════ -->
+<section id="certifications" class="section">
+  <div class="container">
+    <div class="sec-tag reveal">Credentials</div>
+    <h2 class="sec-heading text-c reveal">My <span class="grad">Certifications</span></h2>
+
+    <!-- Category tabs -->
+    <div class="cert-tabs reveal">
+      <button class="cert-tab active" data-cert="expertise">Expertise</button>
+      <button class="cert-tab" data-cert="achievement">Achievement</button>
+      <button class="cert-tab" data-cert="award">Award</button>
+      <button class="cert-tab" data-cert="participant">Participant</button>
+    </div>
+
+    <!-- Slider wrapper -->
+    <div class="cert-slider-wrap reveal">
+      <button class="cert-arrow cert-prev" id="certPrev"><i class="fas fa-chevron-left"></i></button>
+      <div class="cert-slider" id="certSlider">
+
+        <div class="cert-slide" data-cert-cat="expertise">
+          <div class="cert-card tilt-card">
+            <div class="cert-img"><img src="images/item-1.jpg" alt="cert"/></div>
+            <div class="cert-info"><span class="cert-pill expertise">Expertise</span><h4>Front End Developer</h4><p>DSF-16 — Dibimbing (2023)</p></div>
+          </div>
+        </div>
+
+        <div class="cert-slide" data-cert-cat="expertise">
+          <div class="cert-card tilt-card">
+            <div class="cert-img"><img src="images/item-2.jpg" alt="cert"/></div>
+            <div class="cert-info"><span class="cert-pill expertise">Expertise</span><h4>Artificial Intelligence</h4><p>KOPI PENA (2023)</p></div>
+          </div>
+        </div>
+
+        <div class="cert-slide" data-cert-cat="expertise">
+          <div class="cert-card tilt-card">
+            <div class="cert-img"><img src="images/item-3.jpg" alt="cert"/></div>
+            <div class="cert-info"><span class="cert-pill expertise">Expertise</span><h4>Vue.js Authentication</h4><p>Inixindo (2023)</p></div>
+          </div>
+        </div>
+
+        <div class="cert-slide" data-cert-cat="expertise">
+          <div class="cert-card tilt-card">
+            <div class="cert-img"><img src="images/item-5.jpg" alt="cert"/></div>
+            <div class="cert-info"><span class="cert-pill expertise">Expertise</span><h4>UI/UX Design</h4><p>DSF-17 — Dibimbing (2023)</p></div>
+          </div>
+        </div>
+
+        <div class="cert-slide" data-cert-cat="expertise">
+          <div class="cert-card tilt-card">
+            <div class="cert-img"><img src="images/item-6.jpg" alt="cert"/></div>
+            <div class="cert-info"><span class="cert-pill expertise">Expertise</span><h4>Artificial Intelligence</h4><p>KOPI PENA (2023)</p></div>
+          </div>
+        </div>
+
+        <div class="cert-slide" data-cert-cat="achievement">
+          <div class="cert-card tilt-card">
+            <div class="cert-img"><img src="images/item-7.jpg" alt="cert"/></div>
+            <div class="cert-info"><span class="cert-pill achievement">Achievement</span><h4>English Proficiency</h4><p>EF English First (2018)</p></div>
+          </div>
+        </div>
+
+        <div class="cert-slide" data-cert-cat="achievement">
+          <div class="cert-card tilt-card">
+            <div class="cert-img"><img src="images/item-8.jpg" alt="cert"/></div>
+            <div class="cert-info"><span class="cert-pill achievement">Achievement</span><h4>English Proficiency</h4><p>EF English First (2019)</p></div>
+          </div>
+        </div>
+
+        <div class="cert-slide" data-cert-cat="achievement">
+          <div class="cert-card tilt-card">
+            <div class="cert-img"><img src="images/item-9.jpg" alt="cert"/></div>
+            <div class="cert-info"><span class="cert-pill achievement">Achievement</span><h4>TOEFL Prediction</h4><p>Daily Bahasa Inggris (2023)</p></div>
+          </div>
+        </div>
+
+        <div class="cert-slide" data-cert-cat="achievement">
+          <div class="cert-card tilt-card">
+            <div class="cert-img"><img src="images/item-10.jpg" alt="cert"/></div>
+            <div class="cert-info"><span class="cert-pill achievement">Achievement</span><h4>Elementary English</h4><p>LBPP LIA</p></div>
+          </div>
+        </div>
+
+        <div class="cert-slide" data-cert-cat="award">
+          <div class="cert-card tilt-card">
+            <div class="cert-img"><img src="images/item-11.jpg" alt="cert"/></div>
+            <div class="cert-info"><span class="cert-pill award">Award</span><h4>Classic Concert</h4><p>Purwa Caraka Music Studio (2015)</p></div>
+          </div>
+        </div>
+
+        <div class="cert-slide" data-cert-cat="award">
+          <div class="cert-card tilt-card">
+            <div class="cert-img"><img src="images/item-12.jpg" alt="cert"/></div>
+            <div class="cert-info"><span class="cert-pill award">Award</span><h4>Classic Concert</h4><p>Purwa Caraka Music Studio (2017)</p></div>
+          </div>
+        </div>
+
+        <div class="cert-slide" data-cert-cat="participant">
+          <div class="cert-card tilt-card">
+            <div class="cert-img"><img src="images/item-4.jpg" alt="cert"/></div>
+            <div class="cert-info"><span class="cert-pill participant">Participant</span><h4>Web Development Basics</h4><p>Workshop (2021)</p></div>
+          </div>
+        </div>
+
+      </div>
+      <button class="cert-arrow cert-next" id="certNext"><i class="fas fa-chevron-right"></i></button>
+    </div>
+
+    <!-- Dots -->
+    <div class="cert-dots" id="certDots"></div>
+    <!-- Count -->
+    <p class="cert-count" id="certCount"></p>
+  </div>
+</section>
+
+<!-- ══════════════ CONTACT ══════════════ -->
+<section id="contact" class="section alt-sec">
+  <div class="container">
+    <div class="sec-tag reveal">Let's Talk</div>
+    <h2 class="sec-heading reveal">LET'S WORK<br><span class="grad">TOGETHER</span></h2>
+    <div class="contact-grid">
+      <div class="contact-left reveal">
+        <div class="c-info-card"><i class="fas fa-map-marker-alt"></i><div><h4>Location</h4><p>Bekasi, West Java, 17434</p></div></div>
+        <div class="c-info-card"><i class="fas fa-phone"></i><div><h4>Phone</h4><p>+62 877 8277 7168</p></div></div>
+        <div class="c-info-card"><i class="fas fa-envelope"></i><div><h4>Email</h4><p>geraldnael@gmail.com</p></div></div>
+        <div class="c-socials">
+          <a href="https://web.facebook.com/profile.php?id=100009593295688" target="_blank" class="mag-btn"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://twitter.com/geraldnael" target="_blank" class="mag-btn"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.linkedin.com/in/gerald-nathanael-9777aa274/" target="_blank" class="mag-btn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://www.instagram.com/gerald.nael/" target="_blank" class="mag-btn"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="contact-form-card reveal">
+        <h3 class="form-title">Contact Form</h3>
+        <p class="form-sub">Or email me directly at <a href="mailto:geraldnael@gmail.com" class="form-email-link">geraldnael(at)gmail.com</a></p>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="c-name">Full Name</label>
+            <input id="c-name" type="text" placeholder="Your Name" autocomplete="off" />
+            <div class="field-err" id="err-name"></div>
+          </div>
+          <div class="form-field">
+            <label for="c-email">Email Address</label>
+            <input id="c-email" type="email" placeholder="you@example.com" autocomplete="off" />
+            <div class="field-err" id="err-email"></div>
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="c-msg">Your Message</label>
+          <textarea id="c-msg" rows="5" placeholder="Tell me about your project..."></textarea>
+          <div class="field-err" id="err-msg"></div>
+          <p class="form-note">I'll never share your data with anyone else. Pinky promise! 🤙</p>
+        </div>
+        <button class="send-btn mag-btn" id="sendBtn">
+          <span id="sendBtnText">Send Message</span>
+          <i class="fas fa-chevron-right" id="sendBtnIcon"></i>
+          <span class="send-glow"></span>
+        </button>
+        <div class="form-status" id="formStatus"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <p>Designed &amp; Built by <span class="grad">Gerald Nathanael</span></p>
+  <p class="footer-copy">© 2024 · Press G+N for a surprise 🥚</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="js/modern.js"></script>
+</body>
+</html>
